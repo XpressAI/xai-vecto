@@ -2,7 +2,7 @@
 
 ## Requirements
 
-PyCaret is tested and supported on the following 64-bit systems:
+This was tested and supported on the following 64-bit systems:
 - Python 3.6 – 3.8
 - Python 3.9 for Ubuntu only
 - Ubuntu 16.04 or later
@@ -23,12 +23,20 @@ This library consists of Vecto components that allow a minimum Vecto implementat
 7. [VectoSearchAnalogy](#vectosearchanalogy)
 8. [DisplayVectoResult](#displayvectoresult)
 
-Below is a description of each components and its ports in Xircuits:
+## Example
+
+There a couple of template-like-example that already connected to run a simple Vecto Search using an [images dataset](https://www.kaggle.com/datasets/atulanandjha/lfwpeople). 
+
+1. ingest_images.py - For ingesting images dataset.
+2. vecto_search_images - To quering a vecto search and display the similarities.
+
+It just missing  its `inPorts`. Before that, make sure you already create your [Vector Space](https://docs.vecto.ai/docs/tutorial/hello_world#make-a-vector-space).
 
 ## Description
+Below is a description of each components and its ports in Xircuits:
 ### VectoLogin
 
-A component to initialize the Vecto API end-point and pass our Vector Space ID and authentication token into Vector Space. It's required at the start of every Vecto process.
+A component to initialize the Vecto API end-point and pass your Vector Space ID and authentication token into Vector Space. It's required at the start of every Vecto process.
 
 **Please note that the Vector Space ID and token are unique for every Vector Space.**
 
@@ -141,12 +149,3 @@ A component that will display the Vecto search results.
 
 ##### inPorts:
 - results: The Vecto Search output that you want to display. Either from VectoSearch or VectoSearchAnalogy components.
-
-## Example
-
-There a couple of template-like-example that already connected to run a simple Vecto Search using an **images dataset**. 
-
-1. ingest_images.py - For ingesting images dataset.
-2. vecto_search_images - To quering a vecto search and display the similarities.
-
-It just missing  its `inPorts`. Before that, make sure you already create your [Vector Space](https://docs.vecto.ai/docs/tutorial/hello_world#make-a-vector-space) and you've your own images dataset.

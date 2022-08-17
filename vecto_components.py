@@ -7,7 +7,7 @@ import re
 
 @xai_component(color="#00D7F2")
 class VectoLogin(Component):
-    """A component to initialize the Vecto API end-point and pass our Vector Space ID and authentication token into Vector Space. 
+    """A component to initialize the Vecto API end-point and pass your Vector Space ID and authentication token into Vector Space. 
     It's required at the start of every Vecto process. 
     
     **Please note that the Vector Space ID and token are unique for every Vector Space.**
