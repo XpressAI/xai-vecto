@@ -63,7 +63,6 @@ It's also recommended that the dataset already 'clean' before ingesting.
 - metadata_column: The title/header of the metadata column. 
 
 ##### outPorts:
-- dataset_text: The customized list of the product's dataset ready for vectorizing.
 - data: Return the column of data_column as a list
 - metadata: Return the column of metadata_column as a list
 
