@@ -14,14 +14,14 @@ Ensure you have the right Python version before installing.
 
 This library consists of Vecto components that allow a minimum Vecto implementation in Xircuits:
 
-1. VectoLogin
-2. GetFlipkartDataset 
-3. GetDataFromCSV 
-4. GetImagesDataset 
-5. IngestData
-6. VectoSearch
-7. VectoSearchAnalogy
-8. DisplayVectoResult
+1. [VectoLogin](#vectologin)
+2. [GetFlipkartDataset](#getflipkartdataset)
+3. [GetDataFromCSV](#getdatafromcsv)
+4. [GetImagesDataset](#getimagesdataset)
+5. [IngestData](#ingestdata)
+6. [VectoSearch](#vectosearch)
+7. [VectoSearchAnalogy](#vectosearchanalogy)
+8. [DisplayVectoResult](#displayvectoresult)
 
 Below is a description of each components and its ports in Xircuits:
 
