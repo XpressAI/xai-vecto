@@ -1,0 +1,6 @@
+ftfy
+tqdm
+requests
+pillow
+ipywidgets
+pandas
