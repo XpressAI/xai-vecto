@@ -228,7 +228,10 @@ class IngestData(Component):
             results = requests.post("%s/delete_all" % vecto_base_url,
                           data=payload,
                           headers={"Authorization":"Bearer %s" % token, 'Content-Type': payload.content_type})
-            print("Delete_all status:", results.status_code)
+            if results.status_code == 200:
+                print("Successfully delete all ingested data")
+            else:
+                print("Error in deleting ingested data: ", results.reason)
         
         def ingest_image_batch(batch_path_list):
             data = {'vector_space_id': vector_space_id, 'data': [], 'modality': 'IMAGE'}
@@ -243,8 +246,7 @@ class IngestData(Component):
                           files=[('input', ('dont_care', f, 'application/octet-stream')) for f in files],
                           headers={"Authorization":"Bearer %s" % token})
             if results.status_code != 200:
-                print('Failed to Ingest: ', results)
-                return
+                print('Failed to Ingest: ', results.reason)
             for f in files:
                 f.close()
     
@@ -281,9 +283,11 @@ class IngestData(Component):
         if skip_ingested:
             pass
         elif are_data_images:
+            print('\nIngesting...')
             ingest_all_images(dataset_list, batch_size)
         else:
             index_list = ctx['metadata']
+            print('\nIngesting...')
             ingest_all_text(index_list, dataset_list, batch_size)
 
 @xai_component(color="#00D7F2")
@@ -408,7 +412,6 @@ class VectoSearchAnalogy(Component):
                                    data={'vector_space_id': vector_space_id, 'modality': modality, 'top_k': top_k},
                                    files={'query': query, 'from': start, 'to': end},
                                    headers={"Authorization":"Bearer %s" %token})
-
             results = result.json()['results']
             self.results.value = results
             
@@ -459,7 +462,6 @@ class DisplayVectoResult(Component):
     def execute(self, ctx) -> None:
         results = self.results.value
         data = ctx['data']
-        print(data)
         try:
             are_data_images = ctx['are_data_images'] 
         except:
