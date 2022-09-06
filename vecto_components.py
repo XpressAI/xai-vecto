@@ -193,7 +193,8 @@ class IngestData(Component):
     
     """
     batch_size: InArg[int]
-    dataset: InCompArg[list]
+    data: InCompArg[list]
+    metadata:InCompArg[list]
     are_data_images: InArg[bool]
     delete_ingested: InArg[bool]
     skip_ingested: InArg[bool]
@@ -201,7 +202,8 @@ class IngestData(Component):
     def __init__(self):
         self.done = False
         self.batch_size = InArg.empty()
-        self.dataset = InCompArg.empty()
+        self.data = InCompArg.empty()
+        self.metadata = InCompArg.empty()
         self.are_data_images = InArg.empty()
         self.delete_ingested = InArg.empty()
         self.skip_ingested = InArg.empty()
@@ -214,7 +216,7 @@ class IngestData(Component):
         
         self.done = True
         batch_size = self.batch_size.value
-        dataset_list = self.dataset.value
+        dataset_list = self.data.value
         are_data_images = self.are_data_images.value
         delete_ingested = self.delete_ingested.value if self.delete_ingested.value else True
         skip_ingested = self.skip_ingested.value
@@ -286,7 +288,10 @@ class IngestData(Component):
             print('\nIngesting...')
             ingest_all_images(dataset_list, batch_size)
         else:
-            index_list = ctx['metadata']
+            if self.metadata.value is None:
+                index_list = ctx['metadata']
+            else:
+                index_list = self.metadata.value 
             print('\nIngesting...')
             ingest_all_text(index_list, dataset_list, batch_size)
 
