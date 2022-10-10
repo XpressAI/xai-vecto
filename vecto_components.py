@@ -8,35 +8,41 @@ import re
 @xai_component(color="#00D7F2")
 class VectoLogin(Component):
     """A component to initialize the Vecto API end-point and pass your Vector Space ID and authentication token into Vector Space. 
-    It's required at the start of every Vecto process. 
+    It's required at the start of every Vecto process.
+    If not provided, it will search whether `token` and `vector_space_id` are environment variables.
     
     **Please note that the Vector Space ID and token are unique for every Vector Space.**
     
     ##### inPorts:
-    - token: The Vector Space authentication. Must be filled.
+    - token: The Vector Space authentication. 
     - vecto_base_url: The main Vecto base URL. Default for public is http://api.vecto.ai/api/v0
-    - vector_space_id: The Vector Space ID. Must be filled.
+    - vector_space_id: The Vector Space ID.
     """
-    token: InCompArg[str]
+    token: InArg[str]
     vecto_base_url: InArg[str]
-    vector_space_id: InCompArg[int]
+    vector_space_id: InArg[int]
     
     def __init__(self):
 
         self.done = False
-        self.token = InCompArg.empty()
+        self.token = InArg.empty()
         self.vecto_base_url = InArg.empty()
-        self.vector_space_id = InCompArg.empty()
+        self.vector_space_id = InArg.empty()
 
     def execute(self, ctx) -> None:
-        
+        import os
+
+        token = self.token.value if self.token.value else os.environ['user_token']
+        vector_space_id = self.vector_space_id.value if self.vector_space_id.value else os.environ['vector_space_id']
+
         vecto_setup_dict = {
             "vecto" : {
-                "token" : self.token.value,
+                "token" : token,
                 "vecto_base_url" : self.vecto_base_url.value if self.vecto_base_url.value else 'http://api.vecto.ai/api/v0',
-                "vector_space_id" : self.vector_space_id.value
+                "vector_space_id" : vector_space_id
                 }
-        }
+            }
+
         ctx.update(vecto_setup_dict)
         self.done = True
 
