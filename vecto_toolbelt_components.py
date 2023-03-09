@@ -1,6 +1,6 @@
 from xai_components.base import InArg, OutArg, InCompArg, Component, xai_component
 from vecto import Vecto, vecto_toolbelt
-from vecto import ( VectoIngestData, VectoEmbeddingData, VectoMetadata, 
+from vecto.vecto_requests import ( VectoIngestData, VectoEmbeddingData, VectoMetadata, 
                    VectoAnalogyStartEnd, IngestResponse, LookupResult, 
                    LookupResponse )
 import os, io
