@@ -38,3 +38,11 @@ class CSV2VectoIngest(Component):
                 data.append({'data': row[self.data_str.value], 'attributes': row[self.attribute_str.value]})
 
         self.IngestData.value = data
+        
+@xai_component
+class PrettyPrint(Component):
+    msg: InArg[any]
+    
+    def execute(self, ctx) -> None:
+        from pprint import pprint
+        pprint(self.msg.value)

@@ -1,6 +1,2 @@
-ftfy
-tqdm
-requests
-pillow
-ipywidgets
-pandas
+git+https://github.com/XpressAI/vecto-python-sdk@v0.1.0
+python-dotenv

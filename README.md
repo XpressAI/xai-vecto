@@ -4,7 +4,7 @@
 </a>
 </p>
 <p align="center">
-  <a href="https://docs.vecto.ai/docs/">Docs</a> •
+  <a href="https://docs.vecto.ai/">Docs</a> •
   <a href="https://www.xpress.ai/blog/">Blog</a> •
   <a href="https://discord.com/invite/vgEg2ZtxCw">Discord</a>
 <br>
@@ -13,7 +13,7 @@
 
 # Xircuits Vecto Components Library
 
-This library consists of 12 Xircuits components (8 core + 4 toolkit) from the [Vecto Python SDK](https://github.com/XpressAI/vecto-python-sdk).
+This library consists of 12 Xircuits components from the [Vecto Python SDK](https://github.com/XpressAI/vecto-python-sdk).
 
 It also contains 3 workflows:
 
@@ -34,7 +34,6 @@ You will need a Python version higher than 3.6.
 
 ## Installation
 
-Fetch the latest wheel from the [Vecto Python SDK action](https://github.com/XpressAI/vecto-python-sdk/actions/workflows/build-wheel.yml) and extract it. Install the wheel using:
 ```
-pip install vecto-0.1.0-py2.py3-none-any.whl
+pip install git+https://github.com/XpressAI/vecto-python-sdk@latest-release-tag
 ```
