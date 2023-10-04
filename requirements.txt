@@ -1,2 +1,2 @@
-git+https://github.com/XpressAI/vecto-python-sdk@v0.1.0
+vecto-sdk
 python-dotenv
