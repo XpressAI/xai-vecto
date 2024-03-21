@@ -1,4 +1,6 @@
 from xai_components.base import InArg, OutArg, InCompArg, Component, xai_component, secret
+from vecto.schema import LookupResult, VectoIngestData
+from typing import Union, List
 from vecto import Vecto
 from pprint import pprint
 from dotenv import load_dotenv
@@ -67,7 +69,7 @@ class VectoLookup(Component):
     modality: InCompArg[str]
     top_k: InArg[int]
 
-    LookupResponse: OutArg[any]
+    LookupResponse: OutArg[LookupResult]
 
     def __init__(self):
         super().__init__()
@@ -140,7 +142,7 @@ class VectoComputeAnalogy(Component):
     top_k: InArg[int]
     modality: InCompArg[str]
 
-    LookupResponse: OutArg[any]
+    LookupResponse: OutArg[LookupResult]
 
     def __init__(self):
         super().__init__()

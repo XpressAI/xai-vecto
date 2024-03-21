@@ -35,5 +35,5 @@ You will need a Python version higher than 3.6.
 ## Installation
 
 ```
-pip install git+https://github.com/XpressAI/vecto-python-sdk@latest-release-tag
+pip install vecto-sdk
 ```

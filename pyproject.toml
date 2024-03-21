@@ -1,0 +1,14 @@
+[project]
+name = "xai-vecto"
+version = "0.2.0"
+description = "Xircuits component library for Vecto, a vector database to leverage vector embeddings."
+authors = [{ name = "XpressAI", email = "eduardo@xpress.ai" }]
+license = "Apache-2.0"
+readme = "readme.md"
+repository = "https://github.com/XpressAI/xai-vecto"
+keywords = ["xircuits", "vecto", "embeddings", "vector database", "vector search", "RAG"]
+
+# Xircuits-specific configurations
+[tool.xircuits]
+requirements = "requirements.txt"
+default_example_path = "examples/SimpleIngestLookup.xircuits"

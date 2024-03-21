@@ -1,4 +1,6 @@
 from xai_components.base import InArg, OutArg, InCompArg, Component, xai_component
+from vecto.schema import LookupResult, VectoIngestData
+from typing import Union, List
 
 @xai_component
 class CSV2VectoIngest(Component):
@@ -19,7 +21,7 @@ class CSV2VectoIngest(Component):
 
     delimiter: InArg[str]
 
-    IngestData: OutArg[any] #Union[VectoIngestData, List[VectoIngestData]]
+    IngestData: OutArg[Union[VectoIngestData, List[VectoIngestData]]]
 
     def __init__(self):
         super().__init__()
@@ -46,3 +48,29 @@ class PrettyPrint(Component):
     def execute(self, ctx) -> None:
         from pprint import pprint
         pprint(self.msg.value)
+
+
+@xai_component
+class VectoResultUnpacker(Component):
+    """
+    A component to unpack a LookupResult into its individual components: attributes, id, and similarity.
+    
+    ### InPorts:
+    - lookup_result: The LookupResult named tuple to be unpacked.
+
+    ### OutPorts:
+    - attributes: The attributes part of the LookupResult.
+    - id: The id part of the LookupResult.
+    - similarity: The similarity score part of the LookupResult.
+    """
+    lookup_result: InCompArg[LookupResult]
+
+    attributes: OutArg[object]
+    id: OutArg[int]
+    similarity: OutArg[float]
+
+    def execute(self, ctx) -> None:
+        self.attributes.value = self.lookup_result.value.attributes
+        self.id.value = self.lookup_result.value.id
+        self.similarity.value = self.lookup_result.value.similarity
+
