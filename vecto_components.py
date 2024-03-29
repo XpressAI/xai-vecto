@@ -113,7 +113,18 @@ class VectoIngest(Component):
     def execute(self, ctx) -> None:
 
         vecto_client = self.vecto_client.value if self.vecto_client.value else ctx['vecto_client']
-        self.ingestResponse.value = vecto_client.ingest(self.ingest_data.value, self.modality.value)
+
+        data = self.ingest_data.value
+        if len(data) >= 100:
+            chunk_size = 100
+            chunks = [data[i:i + chunk_size] for i in range(0, len(data), chunk_size)]
+
+            i = 0
+            for chunk in chunks:
+                self.ingestResponse.value = vecto_client.ingest(chunk, self.modality.value)
+                print(f"ingest {(i / len(data)) * 100}% complete.")
+        else:
+            self.ingestResponse.value = vecto_client.ingest(self.ingest_data.value, self.modality.value)
         # pprint(self.ingestResponse.value)
 
 
