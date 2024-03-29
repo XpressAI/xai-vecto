@@ -37,7 +37,13 @@ class CSV2VectoIngest(Component):
             reader = csv.DictReader(csvfile, delimiter=self.delimiter.value)
             
             for row in reader:
-                data.append({'data': row[self.data_str.value], 'attributes': row[self.attribute_str.value]})
+                if ',' in self.attribute_str.value:
+                    data.append({
+                        'data': row[self.data_str.value],
+                        'attributes': {attr: row[attr] for attr in self.attribute_str.value.split(',')}
+                    })
+                else:
+                    data.append({'data': row[self.data_str.value], 'attributes': row[self.attribute_str.value]})
 
         self.IngestData.value = data
         
