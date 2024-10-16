@@ -46,15 +46,6 @@ class CSV2VectoIngest(Component):
                     data.append({'data': row[self.data_str.value], 'attributes': row[self.attribute_str.value]})
 
         self.IngestData.value = data
-        
-@xai_component
-class PrettyPrint(Component):
-    msg: InArg[any]
-    
-    def execute(self, ctx) -> None:
-        from pprint import pprint
-        pprint(self.msg.value)
-
 
 @xai_component
 class VectoResultUnpacker(Component):
@@ -79,4 +70,3 @@ class VectoResultUnpacker(Component):
         self.attributes.value = self.lookup_result.value.attributes
         self.id.value = self.lookup_result.value.id
         self.similarity.value = self.lookup_result.value.similarity
-
