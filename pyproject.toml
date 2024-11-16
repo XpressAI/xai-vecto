@@ -8,6 +8,11 @@ readme = "readme.md"
 repository = "https://github.com/XpressAI/xai-vecto"
 keywords = ["xircuits", "vecto", "embeddings", "vector database", "vector search", "RAG"]
 
+dependencies = [
+    "vecto-sdk==0.2.3",
+    "python-dotenv"
+]
+
 # Xircuits-specific configurations
 [tool.xircuits]
 requirements = "requirements.txt"
