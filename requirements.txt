@@ -1,2 +1,9 @@
+certifi==2024.12.14
+charset-normalizer==3.4.0
+idna==3.10
+urllib3==2.2.3
+requests==2.32.3
+packaging==24.2
+requests-toolbelt==1.0.0
+python-dotenv==1.0.1
 vecto-sdk==0.2.3
-python-dotenv
