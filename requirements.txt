@@ -1,2 +1,2 @@
+python-dotenv==1.0.1
 vecto-sdk==0.2.3
-python-dotenv
