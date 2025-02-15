@@ -29,17 +29,17 @@ class VectoClient(Component):
 
     def execute(self, ctx) -> None:
 
-        token = self.token.value if self.token.value else os.environ['user_token']
+        token = self.token.value if self.token.value else os.environ['VECTO_API_TOKEN']
 
         vecto_base_url = ''
         if self.vecto_base_url.value:
             vecto_base_url = self.vecto_base_url.value
-        elif os.environ.get('vecto_base_url') is not None:
-            vecto_base_url = os.environ['vecto_base_url']
+        elif os.environ.get('VECTO_BASE_URL') is not None:
+            vecto_base_url = os.environ['VECTO_BASE_URL']
         else:
             vecto_base_url = 'https://api.vecto.ai'
 
-        vector_space_id = self.vector_space_id.value if self.vector_space_id.value else os.environ['vector_space_id']
+        vector_space_id = self.vector_space_id.value if self.vector_space_id.value else os.environ['VECTO_VECTOR_SPACE_ID']
 
         vecto_client = Vecto(token, vector_space_id, vecto_base_url=vecto_base_url)
 
